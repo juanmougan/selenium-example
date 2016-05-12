@@ -34,6 +34,15 @@ public class SignInTestIT {
         // Then
         wait.until(ExpectedConditions.urlToBe("http://localhost:8080/merchantmanagement/"));
         Assert.assertEquals("Merchant Management Console", driver.getTitle());
+
+        WebElement myAccountDropDown = driver.findElement(By.id("myAccountDropDownLink"));
+        myAccountDropDown.click();
+
+        WebElement signOutLink = driver.findElement(By.linkText("Sign out"));
+        signOutLink.click();
+
+        wait.until(ExpectedConditions.urlToBe("http://localhost:8080/merchantmanagement/public/security/login"));
+
         driver.quit();
     }
 
